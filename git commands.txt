@@ -1,4 +1,0 @@
-git add -A
-git commit -m "Final day 2 commit"
-git push
-git status

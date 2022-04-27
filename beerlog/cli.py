@@ -3,11 +3,13 @@ from typing import Optional
 from core import add_beer_to_database, get_beers_from_database
 from rich.table import Table
 from rich.console import Console
+
 # black -l 79 <project_folder> - Formats the code to get rid of bad coding
 
 main = typer.Typer(help="Beer Management Appication")
 
 console = Console()
+
 
 @main.command("add")
 # python beerlog add --help
@@ -35,6 +37,8 @@ def list_beers(style: Optional[str] = None):
         table.add_column(header, style="magenta")
     for beer in beers:
         beer.date = beer.date.strftime("%Y-%m-%d")
-        values = [str(getattr(beer, header)) for header in headers] #beer.name, beer.id
+        values = [
+            str(getattr(beer, header)) for header in headers
+        ]  # beer.name, beer.id
         table.add_row(*values)
     console.print(table)

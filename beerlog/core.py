@@ -1,8 +1,8 @@
-from tkinter import image_names
 from typing import Optional, List
 from sqlmodel import select
 from beerlog.database import get_session
 from beerlog.models import Beer
+
 
 def add_beer_to_database(
     name: str,
@@ -10,19 +10,16 @@ def add_beer_to_database(
     flavor: int,
     image: int,
     cost: int,
- ) -> bool:
-    
+) -> bool:
+
     with get_session() as session:
         beer = Beer(
-            name = name,
-            style = style,
-            flavor = flavor,
-            image = image,
-            cost = cost            
+            name=name, style=style, flavor=flavor, image=image, cost=cost
         )
-        session.add(beer) # INSERT INTO beer ...
+        session.add(beer)  # INSERT INTO beer ...
         session.commit()
     return True
+
 
 def get_beers_from_database() -> List[Beer]:
     with get_session() as session:
