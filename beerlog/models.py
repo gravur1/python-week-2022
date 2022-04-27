@@ -5,7 +5,7 @@ from pydantic import validator
 from statistics import mean
 from datetime import datetime
 
-#Qualquer classe que criarmos SQLModel, automaticamente sera uma tabela Alchemy
+# Qualquer classe que criarmos SQLModel, automaticamente sera uma tabela Alchemy
 class Beer(SQLModel, table=True):
     id: Optional[int] = Field(primary_key=True, default=None, index=True)
     name: str
@@ -14,7 +14,7 @@ class Beer(SQLModel, table=True):
     image: int
     cost: int
     rate: int = 0
-    date: datetime = Field(default_factory = datetime.now)
+    date: datetime = Field(default_factory=datetime.now)
 
     @validator("flavor", "image", "cost")
     def validate_ratings(cls, v, field):
@@ -24,14 +24,10 @@ class Beer(SQLModel, table=True):
 
     @validator("rate", always=True)
     def calculate_rate(cls, v, values):
-        rate = mean(
-            [
-                values["flavor"],
-                values["image"],
-                values["cost"]
-            ]
-        )
+        rate = mean([values["flavor"], values["image"], values["cost"]])
         return int(rate)
+
+
 try:
     brewdog = Beer(name="Brewdog", style="IPA", flavor=8, image=8, cost=9)
 except RuntimeError:
