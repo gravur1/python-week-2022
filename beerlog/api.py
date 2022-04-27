@@ -5,7 +5,10 @@ from beerlog.serializers import BeerOut, BeerIn
 from beerlog.database import get_session
 from beerlog.models import Beer
 
-api = FastAPI(title="Beerlog") #python -m uvicorn beerlog.api:api --reload
+#to start web API run:
+#python -m uvicorn beerlog.api:api --reload
+
+api = FastAPI(title="Beerlog") 
 
 #http://127.0.0.1:8000/redoc
 #http://127.0.0.1:8000/docs
