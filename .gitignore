@@ -130,10 +130,13 @@ dmypy.json
 *.db
 
 #database
-.beerlog.db
+beerlog.db
 
 # Word
 *.docx
+
+#dbs
+*Db.*
 
 #Notes
 .docs_and_notes/
