@@ -1,8 +1,8 @@
 from tkinter import image_names
 from typing import Optional, List
 from sqlmodel import select
-from database import get_session
-from models import Beer
+from beerlog.database import get_session
+from beerlog.models import Beer
 
 def add_beer_to_database(
     name: str,

@@ -5,8 +5,8 @@ warnings.filterwarnings("ignore", category=SAWarning) #getting rid of SQL Alchem
 SelectOfScalar.inherit_cache = True #getting rid of SQL Alchemy warnings
 Select.inherit_cache = True #getting rid of SQL Alchemy warnings
 from sqlmodel import create_engine, Session
-from config import settings
-import models
+from beerlog import models
+from beerlog.config import settings
 
 engine = create_engine(settings.database.url)
 
