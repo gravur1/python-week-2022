@@ -1,6 +1,6 @@
 import typer
 from typing import Optional
-from core import add_beer_to_database, get_beers_from_database
+from beerlog.core import add_beer_to_database, get_beers_from_database
 from rich.table import Table
 from rich.console import Console
 
