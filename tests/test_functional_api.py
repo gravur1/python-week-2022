@@ -8,17 +8,17 @@ client = TestClient(api)
 
 def test_create_beer_via_api():
     response = client.post(
-        "/beers",
+        "/beers/",
         json={
             "name": "Skol",
             "style": "Pilsen",
             "flavor": 1,
             "image": 1,
-            "cost": 2,
-        },
+            "cost": 2
+        }
     )
     
-    assert response.status_code == 201
+    assert response.status_code == 200
     result = response.json()
     assert result["name"] == "Skol"
     assert result["id"] == 1
